@@ -82,11 +82,11 @@
       </div>
     <% } %>
     <div class="jumbotron">
-      <h1>Bespoke Suits for Dogs</h1>
-      <p><i>Why can't your canine companion be classy too?</i></p>
+      <h1>Ternos sob medida para cães</h1>
+      <p><i>Por que seu cao tb nao pode ser classudo?</i></p>
     </div>
     <div class="page-header">
-      <h1>Our Products</h1>
+      <h1>Nossos Produtos</h1>
     </div>
 
     <div class="row">
