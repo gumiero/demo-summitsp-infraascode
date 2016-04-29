@@ -83,7 +83,7 @@
     <% } %>
     <div class="jumbotron">
       <h1>Ternos sob medida para caes</h1>
-      <p><i>Pq seu cachorrinho tb nao pode ser classudo?</i></p>
+      <p><i>Por quê seu cachorrinho também não pode ser classudo?</i></p>
     </div>
     <div class="page-header">
       <h1>Our Products</h1>
