@@ -317,6 +317,7 @@
                 "cloudformation:Describe*",
                 "cloudformation:CreateStack",
                 "cloudformation:UpdateStack",
+                "cloudformation:ValidateTemplate",
                 "ec2:Describe*",
                 "ec2:RevokeSecurityGroup*"
               ],

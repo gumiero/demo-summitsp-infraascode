@@ -31,7 +31,7 @@ aws cloudformation update-stack \
         ParameterKey=PublicSubnetA,ParameterValue=$PublicSubnetA
 set -e
 
-stack_status="$(bash cfn-wait-for-stack.sh $stackname)"
+stack_status="$(bash cfn-wait-for-stack.sh $stackname $region)"
 if [ $? -ne 0 ]; then
     echo "Fatal: $(basename $0) stack $stackname ($stack_status) failed to update properly" >&2
     exit 1
