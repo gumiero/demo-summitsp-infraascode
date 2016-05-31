@@ -7,7 +7,7 @@ region="$2"
 
 echo "Checking if WebAppsStack is valid"
 
-aws cloudformation validate-template 
+aws cloudformation validate-template \
     --region $region \
     --template-body file://cloudformation/aws-webapps-summitsp.template
 

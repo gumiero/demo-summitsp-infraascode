@@ -651,7 +651,7 @@
       "DependsOn" : "JenkinsHostWaitCondition",
       "Properties": {
         "Category": "Build",
-        "Provider": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "2-Jenkins"]]},
+        "Provider": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-Jenkins"]]},
         "Version": "1",
         "ConfigurationProperties": [
           {
@@ -739,7 +739,7 @@
                   "Category": "Build",
                   "Owner": "Custom",
                   "Version": "1",
-                  "Provider": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "2-Jenkins"]]}
+                  "Provider": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-Jenkins"]]}
                 },
                 "OutputArtifacts": [
                   {
@@ -762,7 +762,7 @@
                   "Category": "Build",
                   "Owner": "Custom",
                   "Version": "1",
-                  "Provider": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "2-Jenkins"]]}
+                  "Provider": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-Jenkins"]]}
                 },
                 "OutputArtifacts": [
                   {
