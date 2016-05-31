@@ -314,9 +314,11 @@
                 "codepipeline:PollForJobs",
                 "codepipeline:PutJobFailureResult",
                 "codepipeline:PutJobSuccessResult",
-                "cloudformation:DescribeStacks",
+                "cloudformation:Describe*",
                 "cloudformation:CreateStack",
-                "cloudformation:UpdateStack"
+                "cloudformation:UpdateStack",
+                "ec2:Describe*",
+                "ec2:RevokeSecurityGroup*"
               ],
               "Effect": "Allow",
               "Resource": "*"
@@ -372,6 +374,18 @@
               "/tmp/config.xml" : {
                 "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/config.xml",
                 "mode" : "644"
+              },
+              "/tmp/config-infra.xml" : {
+                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/config-infra.xml",
+                "mode" : "644"
+              },
+              "/tmp/cfn-update-webappsstack.sh" : {
+                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/cfn-update-webappsstack.sh",
+                "mode" : "755"
+              },
+              "/tmp/cfn-wait-for-stack.sh" : {
+                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/cfn-wait-for-stack.sh",
+                "mode" : "755"
               },
               "/tmp/hudson.tasks.Maven.xml" : {
                 "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/hudson.tasks.Maven.xml",
@@ -447,6 +461,20 @@
                 "/bin/sed -i \"s/REGION/",{"Ref": "AWS::Region"},"/g\" /tmp/config.xml\n",
                 "/usr/bin/java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 create-job ", {"Ref" : "AppName"} ,"< /tmp/config.xml\n",
                 "rm /tmp/config.xml\n",
+
+                "# configure our infrastructure job\n",
+                "/bin/sed -i \"s/APPNAME/",{"Fn::Join" : ["", [{"Ref" : "AppName"}, "2"]]},"/g\" /tmp/config-infra.xml\n",
+                "/bin/sed -i \"s/REGION/",{"Ref": "AWS::Region"},"/g\" /tmp/config-infra.xml\n",
+                "/usr/bin/java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 create-job ", {"Ref" : "AppName"} ,"< /tmp/config-infra.xml\n",
+                "rm /tmp/config-infra.xml\n",
+
+                "# configure our infrastructure scripts\n",
+                "cp /tmp/cfn-update-webappsstack.sh /var/lib/jenkins/jobs/summitsp-infra\n"
+                "chown jenkins:jenkins /var/lib/jenkins/jobs/summitsp-infra/cfn-update-webappsstack.sh\n"
+                "rm /tmp/cfn-update-webappsstack.sh\n"
+                "cp /tmp/cfn-wait-for-stack.sh /var/lib/jenkins/jobs/summitsp-infra\n"
+                "chown jenkins:jenkins /var/lib/jenkins/jobs/summitsp-infra/cfn-wait-for-stack.sh\n"
+                "rm /tmp/cfn-wait-for-stack.sh\n"
 
                 "# Set up port forwarding\n",
                 "iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080\n",
