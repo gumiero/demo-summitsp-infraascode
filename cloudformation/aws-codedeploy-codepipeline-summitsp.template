@@ -271,7 +271,7 @@
     "WebAppsStack" : {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/aws-webapps-summitsp.template",
+        "TemplateURL": "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/cloudformation/aws-webapps-summitsp.template",
         "TimeoutInMinutes" : "60",
         "Parameters": {
           "KeyName": {"Ref" : "KeyName"},
@@ -457,24 +457,24 @@
                 "sleep 30\n",
 
                 "# configure our job\n",
-                "/bin/sed -i \"s/APPNAME/",{"Fn::Join" : ["", [{"Ref" : "AppName"}, "2"]]},"/g\" /tmp/config.xml\n",
+                "/bin/sed -i \"s/APPNAME/",{"Ref" : "AppName"},"/g\" /tmp/config.xml\n",
                 "/bin/sed -i \"s/REGION/",{"Ref": "AWS::Region"},"/g\" /tmp/config.xml\n",
                 "/usr/bin/java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 create-job ", {"Ref" : "AppName"} ,"< /tmp/config.xml\n",
                 "rm /tmp/config.xml\n",
 
                 "# configure our infrastructure job\n",
-                "/bin/sed -i \"s/APPNAME/",{"Fn::Join" : ["", [{"Ref" : "AppName"}, "2"]]},"/g\" /tmp/config-infra.xml\n",
+                "/bin/sed -i \"s/APPNAME/",{"Ref" : "AppName"},"/g\" /tmp/config-infra.xml\n",
                 "/bin/sed -i \"s/REGION/",{"Ref": "AWS::Region"},"/g\" /tmp/config-infra.xml\n",
-                "/usr/bin/java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 create-job ", {"Ref" : "AppName"} ,"< /tmp/config-infra.xml\n",
+                "/usr/bin/java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 create-job ", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]} ,"< /tmp/config-infra.xml\n",
                 "rm /tmp/config-infra.xml\n",
 
                 "# configure our infrastructure scripts\n",
-                "cp /tmp/cfn-update-webappsstack.sh /var/lib/jenkins/jobs/summitsp-infra\n"
-                "chown jenkins:jenkins /var/lib/jenkins/jobs/summitsp-infra/cfn-update-webappsstack.sh\n"
-                "rm /tmp/cfn-update-webappsstack.sh\n"
-                "cp /tmp/cfn-wait-for-stack.sh /var/lib/jenkins/jobs/summitsp-infra\n"
-                "chown jenkins:jenkins /var/lib/jenkins/jobs/summitsp-infra/cfn-wait-for-stack.sh\n"
-                "rm /tmp/cfn-wait-for-stack.sh\n"
+                "cp /tmp/cfn-update-webappsstack.sh /var/lib/jenkins/jobs/summitsp-infra\n",
+                "chown jenkins:jenkins /var/lib/jenkins/jobs/summitsp-infra/cfn-update-webappsstack.sh\n",
+                "rm /tmp/cfn-update-webappsstack.sh\n",
+                "cp /tmp/cfn-wait-for-stack.sh /var/lib/jenkins/jobs/summitsp-infra\n",
+                "chown jenkins:jenkins /var/lib/jenkins/jobs/summitsp-infra/cfn-wait-for-stack.sh\n",
+                "rm /tmp/cfn-wait-for-stack.sh\n",
 
                 "# Set up port forwarding\n",
                 "iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080\n",
