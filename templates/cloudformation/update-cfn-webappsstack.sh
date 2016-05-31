@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-stackname=APPNAME
+stackname=$1
 
 echo "Updating WebAppsStack (nested from $stackname)"
 
