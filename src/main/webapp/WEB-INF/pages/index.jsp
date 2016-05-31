@@ -67,7 +67,7 @@
         <button type="button" class="close" data-dismiss="alert">×</button>
         <h1>Estamos Funcionando!</h1>
         <p>Para celebrar a abertura de nossa loja, todos os ternos estao com <b>25% de desconto</b> e com <b>frete grátis!</b></p>
-        <div class="row">
+        <!-- div class="row">
           <h2><center>Dê estilo ao seu cachorrinho!</center></h2>
           <div class="col-sm-4">
             <center><img src="images/sales-lobsterdog.png" style="width:287px;height:360px;"></center>
@@ -78,7 +78,7 @@
           <div class="col-sm-4">
             <center><img src="images/classy-dog1.png" style="width:268px;height:360px;"><center>
           </div>
-        </div>
+        </div -->
       </div>
     <% } %>
     <div class="jumbotron">
