@@ -319,7 +319,8 @@
                 "cloudformation:UpdateStack",
                 "cloudformation:ValidateTemplate",
                 "ec2:Describe*",
-                "ec2:RevokeSecurityGroup*"
+                "ec2:RevokeSecurityGroup*",
+                "ec2:AuthorizeSecurityGroup*"
               ],
               "Effect": "Allow",
               "Resource": "*"

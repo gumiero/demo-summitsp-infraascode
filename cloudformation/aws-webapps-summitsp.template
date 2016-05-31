@@ -169,12 +169,10 @@
         "VpcId" : { "Ref" : "VpcId" },
         "SecurityGroupIngress" : [ 
           { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : { "Fn::Join": [ "", [{ "Fn::FindInMap" : [ "VPCIpSpace", {"Ref": "AWS::Region"}, "RANGE" ]}, ".", "0.0/16"]]}},
-          { "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : "0.0.0.0/0"},
-          { "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "8080", "CidrIp" : "0.0.0.0/0"}
+          { "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : "0.0.0.0/0"}
         ],
         "SecurityGroupEgress" : [
           { "IpProtocol" : "tcp", "FromPort" : "80",  "ToPort" : "80",  "CidrIp" : "0.0.0.0/0" },
-          { "IpProtocol" : "tcp", "FromPort" : "80",  "ToPort" : "8080",  "CidrIp" : "0.0.0.0/0" },          
           { "IpProtocol" : "tcp", "FromPort" : "443", "ToPort" : "443", "CidrIp" : "0.0.0.0/0" },
           { "IpProtocol" : "udp", "FromPort" : "123", "ToPort" : "123", "CidrIp" : "0.0.0.0/0" },
           { "IpProtocol" : "udp", "FromPort" : "9418", "ToPort" : "9418", "CidrIp" : "0.0.0.0/0" },
