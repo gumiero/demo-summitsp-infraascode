@@ -750,6 +750,29 @@
                   "ProjectName": {"Ref" : "AppName"}
                 },
                 "RunOrder": 1
+              },
+              {
+                "Name": "InfrastructureBuild",
+                "InputArtifacts": [
+                  {
+                    "Name": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-SourceArtifact"]]}
+                  }
+                ],
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "Custom",
+                  "Version": "1",
+                  "Provider": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "2-Jenkins"]]}
+                },
+                "OutputArtifacts": [
+                  {
+                    "Name": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-InfraBuiltArtifact"]]}
+                  }
+                ],
+                "Configuration": {
+                  "ProjectName": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]}
+                },
+                  "RunOrder": 1
               }
             ]
           },
