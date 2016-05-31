@@ -36,7 +36,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Ternos sob medida para caes</a>
+        <a class="navbar-brand" href="#">Ternos sob medida para cães</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -49,7 +49,7 @@
     <div class="alert alert-info" role="alert">
       <p><strong>AWS CodeDeploy Application:</strong> ${applicationName}</p>
       <p><strong>AWS CodeDeploy Deployment Group:</strong> ${deploymentGroupName}</p>
-      <strong>Instancias associadas a esta frota:</strong>
+      <strong>Instâncias associadas a esta tag/frota:</strong>
       <ul>
         <% for (final String instance : (List<String>) request.getAttribute("instanceIds")) { %>
           <% if (((Map<String, String>) request.getAttribute("instanceStates")).containsKey(instance)) { %>
@@ -62,7 +62,7 @@
     </div>
   <% } %>
   <div class="container theme-showcase" role="main">
-    <% if (((String) request.getAttribute("deploymentGroupName")).contains("Production")) { %>
+    <% if (((String) request.getAttribute("deploymentGroupName")).contains("Prod")) { %>
       <div class="alert alert-dismissible alert-warning">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <h1>Estamos Funcionando!</h1>
@@ -83,7 +83,7 @@
     <% } %>
     <div class="jumbotron">
       <h1>Ternos sob medida para cães</h1>
-      <p><i>Por quê seu cachorrinho também não pode ser classudo?</i></p>
+      <p><i>Por quê seu cachorrinho não pode ser classudo?</i></p>
     </div>
     <div class="page-header">
       <h1>Nossos Produtos</h1>
