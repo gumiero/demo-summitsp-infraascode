@@ -469,11 +469,11 @@
                 "rm /tmp/config-infra.xml\n",
 
                 "# configure our infrastructure scripts\n",
-                "cp /tmp/cfn-update-webappsstack.sh /var/lib/jenkins/jobs/{"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]}\n",
-                "chown jenkins:jenkins /var/lib/jenkins/jobs/{"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]}/cfn-update-webappsstack.sh\n",
+                "cp /tmp/cfn-update-webappsstack.sh /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]} ,"\n",
+                "chown jenkins:jenkins /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]} ,"/cfn-update-webappsstack.sh\n",
                 "rm /tmp/cfn-update-webappsstack.sh\n",
-                "cp /tmp/cfn-wait-for-stack.sh /var/lib/jenkins/jobs/{"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]}\n",
-                "chown jenkins:jenkins /var/lib/jenkins/jobs/{"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]}/cfn-wait-for-stack.sh\n",
+                "cp /tmp/cfn-wait-for-stack.sh /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]} ,"\n",
+                "chown jenkins:jenkins /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]} ,"/cfn-wait-for-stack.sh\n",
                 "rm /tmp/cfn-wait-for-stack.sh\n",
 
                 "# Set up port forwarding\n",
