@@ -271,7 +271,7 @@
     "WebAppsStack" : {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/cloudformation/aws-webapps-summitsp.template",
+        "TemplateURL": "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/aws-webapps-summitsp.template",
         "TimeoutInMinutes" : "60",
         "Parameters": {
           "KeyName": {"Ref" : "KeyName"},
@@ -372,27 +372,27 @@
             },
             "files" : {
               "/tmp/config.xml" : {
-                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/config.xml",
+                "source": "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/config.xml",
                 "mode" : "644"
               },
               "/tmp/config-infra.xml" : {
-                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/config-infra.xml",
+                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/config-infra.xml",
                 "mode" : "644"
               },
               "/tmp/cfn-update-webappsstack.sh" : {
-                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/cfn-update-webappsstack.sh",
+                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/cfn-update-webappsstack.sh",
                 "mode" : "755"
               },
               "/tmp/cfn-wait-for-stack.sh" : {
-                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/cfn-wait-for-stack.sh",
+                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/cfn-wait-for-stack.sh",
                 "mode" : "755"
               },
               "/tmp/hudson.tasks.Maven.xml" : {
-                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/hudson.tasks.Maven.xml",
+                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/hudson.tasks.Maven.xml",
                 "mode" : "644"
               },
               "/tmp/jenkins.mvn.GlobalMavenConfig.xml" : {
-                "source" : "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/jenkins/jenkins.mvn.GlobalMavenConfig.xml",
+                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/jenkins.mvn.GlobalMavenConfig.xml",
                 "mode" : "644"
               }
             }
