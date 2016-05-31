@@ -36,7 +36,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Ternos sob medida para cães</a>
+        <a class="navbar-brand" href="#">Ternos sob medida para seu cãozinho</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -45,7 +45,7 @@
       </div>
     </div>
   </nav>
-  <% if (!((String) request.getAttribute("deploymentGroupName")).contains("Production")) { %>
+  <% if (!((String) request.getAttribute("deploymentGroupName")).contains("Prod")) { %>
     <div class="alert alert-info" role="alert">
       <p><strong>AWS CodeDeploy Application:</strong> ${applicationName}</p>
       <p><strong>AWS CodeDeploy Deployment Group:</strong> ${deploymentGroupName}</p>
