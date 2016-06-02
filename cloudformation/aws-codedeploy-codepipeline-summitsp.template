@@ -381,8 +381,8 @@
                 "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/config-infra.xml",
                 "mode" : "644"
               },
-              "/tmp/config-serverspec.xml" : {
-                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/config-serverspec.xml",
+              "/tmp/config-sspec.xml" : {
+                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/config-sspec.xml",
                 "mode" : "644"
               },
               "/tmp/cfn-update-webappsstack.sh" : {
@@ -490,14 +490,14 @@
                 "gem install rspec aws-sdk\n",
 
                 "# configure our serverspec job\n",
-                "/bin/sed -i \"s/APPNAME/",{"Ref" : "AppName"},"/g\" /tmp/config-serverspec.xml\n",
-                "/bin/sed -i \"s/REGION/",{"Ref": "AWS::Region"},"/g\" /tmp/config-serverspec.xml\n",
-                "/usr/bin/java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 create-job ", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]} ,"< /tmp/config-serverspec.xml\n",
-                "rm /tmp/config-serverspec.xml\n",
+                "/bin/sed -i \"s/APPNAME/",{"Ref" : "AppName"},"/g\" /tmp/config-sspec.xml\n",
+                "/bin/sed -i \"s/REGION/",{"Ref": "AWS::Region"},"/g\" /tmp/config-sspec.xml\n",
+                "/usr/bin/java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 create-job ", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-sspec"]]} ,"< /tmp/config-sspec.xml\n",
+                "rm /tmp/config-sspec.xml\n",
 
                 "# configure our serverspec scripts\n",
-                "cp /tmp/serverspec-tests.sh /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]} ,"\n",
-                "chown jenkins:jenkins /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]} ,"/serverspec-tests.sh\n",
+                "cp /tmp/serverspec-tests.sh /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-sspec"]]} ,"\n",
+                "chown jenkins:jenkins /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-sspec"]]} ,"/serverspec-tests.sh\n",
                 "rm /tmp/serverspec-tests.sh\n",
 
                 "# Set up port forwarding\n",
@@ -846,7 +846,7 @@
                   }
                 ],
                 "Configuration": {
-                  "ProjectName": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]}
+                  "ProjectName": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-sspec"]]}
                 },
                   "RunOrder": 1
               }

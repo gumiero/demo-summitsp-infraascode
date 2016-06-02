@@ -6,7 +6,7 @@
   <properties/>
   <scm class="com.amazonaws.codepipeline.jenkinsplugin.AWSCodePipelineSCM" plugin="aws-codepipeline@0.13">
     <clearWorkspace>true</clearWorkspace>
-    <projectName>APPNAME-serverspec</projectName>
+    <projectName>APPNAME-sspec</projectName>
     <actionTypeCategory>Build</actionTypeCategory>
     <actionTypeProvider>APPNAME-Jenkins</actionTypeProvider>
     <actionTypeVersion>1</actionTypeVersion>
