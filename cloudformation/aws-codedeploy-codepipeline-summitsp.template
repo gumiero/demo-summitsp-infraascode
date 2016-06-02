@@ -498,7 +498,7 @@
                 "# configure our serverspec scripts\n",
                 "cp /tmp/serverspec-tests.sh /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]} ,"\n",
                 "chown jenkins:jenkins /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]} ,"/serverspec-tests.sh\n",
-                "rm /tmp/serverspec-tests.sh.sh\n",
+                "rm /tmp/serverspec-tests.sh\n",
 
                 "# Set up port forwarding\n",
                 "iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080\n",
