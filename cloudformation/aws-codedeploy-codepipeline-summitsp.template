@@ -28,13 +28,13 @@
 
     "S3ArtifactObject": {
       "Type" : "String",
-      "Default" : "app/aws-codedeploy-sample-tomcat.zip",
+      "Default" : "samples/latest/aws-codedeploy-sample-tomcat.zip",
       "Description" : "Application artfiact name in S3."
     },
 
     "S3ArtifactBucket": {
       "Type" : "String",
-      "Default" : "summitsp-aws-codedeploy-samples",
+      "Default" : "aws-codedeploy-samples-us-east-1",
       "Description" : "Name of the bucket that the application artifact will be based in."
     },
 
@@ -53,7 +53,7 @@
 
     "GitHubRepoName":{
       "Type" : "String",
-      "Default" : "aws-codedeploy-sample-tomcat",
+      "Default" : "summitsp-infraascode-sample",
       "Description" : "Name of the repository that your application is in. Not the Url."
     },
 
@@ -271,7 +271,7 @@
     "WebAppsStack" : {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/summitsp-aws-codedeploy-samples/cloudformation/aws-webapps-summitsp.template",
+        "TemplateURL": "https://s3.amazonaws.com/summitsp-infraascode-sample/cloudformation/aws-webapps-summitsp.template",
         "TimeoutInMinutes" : "60",
         "Parameters": {
           "KeyName": {"Ref" : "KeyName"},
@@ -374,27 +374,27 @@
             },
             "files" : {
               "/tmp/config.xml" : {
-                "source": "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/config.xml",
+                "source": "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/config.xml",
                 "mode" : "644"
               },
               "/tmp/config-infra.xml" : {
-                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/config-infra.xml",
+                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/config-infra.xml",
                 "mode" : "644"
               },
               "/tmp/cfn-update-webappsstack.sh" : {
-                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/cfn-update-webappsstack.sh",
+                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/cfn-update-webappsstack.sh",
                 "mode" : "755"
               },
               "/tmp/cfn-wait-for-stack.sh" : {
-                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/cfn-wait-for-stack.sh",
+                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/cfn-wait-for-stack.sh",
                 "mode" : "755"
               },
               "/tmp/hudson.tasks.Maven.xml" : {
-                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/hudson.tasks.Maven.xml",
+                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/hudson.tasks.Maven.xml",
                 "mode" : "644"
               },
               "/tmp/jenkins.mvn.GlobalMavenConfig.xml" : {
-                "source" : "https://raw.githubusercontent.com/ggallego/aws-codedeploy-sample-tomcat/master/cloudformation/jenkins/jenkins.mvn.GlobalMavenConfig.xml",
+                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/jenkins.mvn.GlobalMavenConfig.xml",
                 "mode" : "644"
               }
             }
