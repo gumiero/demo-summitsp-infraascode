@@ -381,12 +381,20 @@
                 "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/config-infra.xml",
                 "mode" : "644"
               },
+              "/tmp/config-serverspec.xml" : {
+                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/config-serverspec.xml",
+                "mode" : "644"
+              },
               "/tmp/cfn-update-webappsstack.sh" : {
                 "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/cfn-update-webappsstack.sh",
                 "mode" : "755"
               },
               "/tmp/cfn-wait-for-stack.sh" : {
                 "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/cfn-wait-for-stack.sh",
+                "mode" : "755"
+              },
+              "/tmp/serverspec-tests.sh" : {
+                "source" : "https://raw.githubusercontent.com/ggallego/summitsp-infraascode-sample/master/cloudformation/jenkins/serverspec-tests.sh",
                 "mode" : "755"
               },
               "/tmp/hudson.tasks.Maven.xml" : {
@@ -477,6 +485,20 @@
                 "cp /tmp/cfn-wait-for-stack.sh /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]} ,"\n",
                 "chown jenkins:jenkins /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-infra"]]} ,"/cfn-wait-for-stack.sh\n",
                 "rm /tmp/cfn-wait-for-stack.sh\n",
+
+                "# install serverspec\n",
+                "gem install rspec aws-sdk\n",
+
+                "# configure our serverspec job\n",
+                "/bin/sed -i \"s/APPNAME/",{"Ref" : "AppName"},"/g\" /tmp/config-serverspec.xml\n",
+                "/bin/sed -i \"s/REGION/",{"Ref": "AWS::Region"},"/g\" /tmp/config-serverspec.xml\n",
+                "/usr/bin/java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 create-job ", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]} ,"< /tmp/config-serverspec.xml\n",
+                "rm /tmp/config-serverspec.xml\n",
+
+                "# configure our serverspec scripts\n",
+                "cp /tmp/serverspec-tests.sh /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]} ,"\n",
+                "chown jenkins:jenkins /var/lib/jenkins/jobs/", {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]} ,"/serverspec-tests.sh\n",
+                "rm /tmp/serverspec-tests.sh.sh\n",
 
                 "# Set up port forwarding\n",
                 "iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080\n",
@@ -799,6 +821,34 @@
                   "DeploymentGroupName": {"Ref" : "DevDeploymentGroup"}
                 },
                 "RunOrder": 1
+              }
+            ]
+          },
+          {
+            "Name": "ServerSpec",
+            "Actions": [
+              {
+                "Name": "ServerSpec",
+                "InputArtifacts": [
+                  {
+                    "Name": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-SourceArtifact"]]}
+                  }
+                ],
+                "ActionTypeId": {
+                  "Category": "Build",
+                  "Owner": "Custom",
+                  "Version": "1",
+                  "Provider": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-Jenkins"]]}
+                },
+                "OutputArtifacts": [
+                  {
+                    "Name": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-ServerSpecArtifact"]]}
+                  }
+                ],
+                "Configuration": {
+                  "ProjectName": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-serverspec"]]}
+                },
+                  "RunOrder": 1
               }
             ]
           },

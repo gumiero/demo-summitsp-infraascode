@@ -4,7 +4,6 @@ set -e
 stackname="$1"
 region="$2"
 
-
 echo "Checking if WebAppsStack is valid"
 
 aws cloudformation validate-template \
