@@ -61,8 +61,7 @@
       </ul>
     </div>
   <% } %>
-  <div class="container theme-showcase" role="main" style="background-color: red;">
-  <!--div class="container theme-showcase" role="main"-->
+  <div class="container theme-showcase" role="main">
     <% if (((String) request.getAttribute("deploymentGroupName")).contains("Prod")) { %>
       <div class="alert alert-dismissible alert-warning">
         <button type="button" class="close" data-dismiss="alert">×</button>

@@ -160,7 +160,7 @@
         "Path": "/",
         "Roles": [{"Ref": "WebAppRole"}]
       }
-    },,
+    },
 
 
     "WebAppSG" : {
