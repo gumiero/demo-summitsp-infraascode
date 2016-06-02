@@ -160,7 +160,7 @@
         "Path": "/",
         "Roles": [{"Ref": "WebAppRole"}]
       }
-    },,
+    },
 
     "WebAppSG" : {
       "Type" : "AWS::EC2::SecurityGroup",
