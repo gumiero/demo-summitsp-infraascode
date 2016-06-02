@@ -487,7 +487,7 @@
                 "rm /tmp/cfn-wait-for-stack.sh\n",
 
                 "# install serverspec\n",
-                "gem install rspec aws-sdk\n",
+                "#gem install rspec aws-sdk\n",
 
                 "# configure our serverspec job\n",
                 "/bin/sed -i \"s/APPNAME/",{"Ref" : "AppName"},"/g\" /tmp/config-sspec.xml\n",
