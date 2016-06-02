@@ -825,10 +825,10 @@
             ]
           },
           {
-            "Name": "ServerSpec",
+            "Name": "Acceptance",
             "Actions": [
               {
-                "Name": "ServerSpec",
+                "Name": "Acceptance",
                 "InputArtifacts": [
                   {
                     "Name": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-SourceArtifact"]]}
@@ -842,7 +842,7 @@
                 },
                 "OutputArtifacts": [
                   {
-                    "Name": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-ServerSpecArtifact"]]}
+                    "Name": {"Fn::Join" : ["", [{"Ref" : "AppName"}, "-AcceptanceArtifact"]]}
                   }
                 ],
                 "Configuration": {
