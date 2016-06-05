@@ -53,7 +53,7 @@
 
     "GitHubRepoName":{
       "Type" : "String",
-      "Default" : "summitsp-infraascode-sample",
+      "Default" : "demo-summitsp-infraascode",
       "Description" : "Name of the repository that your application is in. Not the Url."
     },
 
@@ -271,7 +271,7 @@
     "WebAppsStack" : {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/summitsp-infraascode-sample/cloudformation/aws-webapps-summitsp.template",
+        "TemplateURL": "https://s3.amazonaws.com/glauberg-public-do-not-delete/demo-summitsp-infraascode/cloudformation/aws-webapps-summitsp.template",
         "TimeoutInMinutes" : "60",
         "Parameters": {
           "KeyName": {"Ref" : "KeyName"},
